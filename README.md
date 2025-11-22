@@ -3,8 +3,6 @@
 This repository provides **Rust-inspired optional and result types** in C#, including `Option<T>` and `Result<T, E>`.  
 It allows writing **safe, functional-style code** in C# similar to Rust’s standard library.
 
----
-
 ## Features
 
 ### Option<T>
