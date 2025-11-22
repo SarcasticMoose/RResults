@@ -42,4 +42,12 @@ public struct Option<T>
     /// </summary>
     /// <returns><c>true</c> if this option has a value; otherwise, <c>false</c>.</returns>
     public bool IsNone() => !_isSome;
+    
+    /// <summary>
+    /// Returns the contained value if this <see cref="Option{T}"/> is <c>Some</c>.
+    /// Throws an <see cref="InvalidOperationException"/> if the option is <c>None</c>.
+    /// </summary>
+    /// <returns>The value contained in the option.</returns>
+    /// <exception cref="InvalidOperationException">Thrown when the option is <c>None</c>.</exception>
+    public T UnwrapOrPanic() => IsSome() ? _value : throw new InvalidOperationException("Option is None");
 }
