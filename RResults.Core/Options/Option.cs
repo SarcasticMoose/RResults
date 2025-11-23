@@ -43,36 +43,4 @@ public struct Option<T>
     
     /// <inheritdoc cref="OptionLogic.UnwrapOrPanic"/>
     public T UnwrapOrPanic() => OptionLogic.UnwrapOrPanic(_isSome, _value);
-    
-    /// <summary>
-    /// Returns a <see cref="ReadOnlySpan{T}"/> containing the value when the option
-    /// is <c>Some</c>; otherwise returns an empty span.
-    /// </summary>
-    /// <param name="opt">The option instance to convert.</param>
-    /// <typeparam name="T">The value type stored inside the option.</typeparam>
-    /// <returns>
-    /// A span of length 1 containing the value if <c>Some</c>;
-    /// otherwise an empty <see cref="ReadOnlySpan{T}"/>.
-    /// </returns>
-    public ReadOnlySpan<T> AsSlice()
-        => IsSome()
-            ? MemoryMarshal.CreateReadOnlySpan(ref _value, 1)
-            : ReadOnlySpan<T>.Empty;
-    
-    /// <summary>
-    /// Returns an <see cref="ImmutableOptionRef{T}"/> wrapper around the contained value.
-    /// The wrapper provides read-only access to the value if <c>Some</c>;
-    /// returns <c>default</c> if the option is <c>None</c>.
-    /// </summary>
-    public ImmutableOptionRef<T> AsRef()
-        => IsSome() ? ImmutableOptionRef<T>.Create(ref Unsafe.AsRef(ref _value)) : default;
-
-    /// <summary>
-    /// Returns a <see cref="MutableOptionRef{T}"/> wrapper around the contained value.
-    /// The wrapper provides mutable access to the value if <c>Some</c>;
-    /// returns <c>default</c> if the option is <c>None</c>.
-    /// </summary>
-    public MutableOptionRef<T> AsMut()
-        => IsSome() ? MutableOptionRef<T>.Create(ref Unsafe.AsRef(ref _value)) : default;
-
 }
