@@ -29,7 +29,7 @@ public static class OptionExtensions
     /// </summary>
     public static ImmutableOptionRef<T> AsRef<T>(ref this Option<T> opt)
         where T : struct
-        => opt.IsSome() ? ImmutableOptionRef<T>.Create(ref Unsafe.AsRef(ref opt._value)) : default;
+        => opt.IsSome() ? ImmutableOptionRef<T>.Create(ref opt._value) : default;
 
     /// <summary>
     /// Returns a <see cref="MutableOptionRef{T}"/> wrapper around the contained value.
@@ -39,7 +39,7 @@ public static class OptionExtensions
     /// </summary>
     public static MutableOptionRef<T> AsMut<T>(ref this Option<T> opt) 
         where T : struct
-        => opt.IsSome() ? MutableOptionRef<T>.Create(ref Unsafe.AsRef(ref opt._value)) : default;
+        => opt.IsSome() ? MutableOptionRef<T>.Create(ref opt._value) : default;
     
     /// <summary>
     /// Returns the contained value if the <see cref="Option{T}"/> is <c>Some</c>.

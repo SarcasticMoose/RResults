@@ -20,5 +20,5 @@ public readonly ref struct ImmutableOptionRef<T>
     public bool IsNone() => OptionLogic.IsNone(_isSome);
     
     /// <inheritdoc cref="OptionLogic.UnwrapOrPanicRef"/>
-    public ref T UnwrapOrPanic() => ref OptionLogic.UnwrapOrPanicRef(_isSome, ref _value);
+    public ref readonly T UnwrapOrPanic() => ref OptionLogic.UnwrapOrPanicRef(_isSome, ref _value);
 }
