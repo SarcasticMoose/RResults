@@ -1,8 +1,7 @@
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
-using RResults.Core;
-using RResults.Core.Options;
-using RResults.Core.Options.Ref;
+using RResult.Shared.Options;
+using RResult.Shared.Options.Ref;
 
 namespace RResult.Extensions.Functional;
 
@@ -28,7 +27,7 @@ public static class OptionExtensions
     /// The wrapper provides read-only access to the value if <c>Some</c>;
     /// returns <c>default</c> if the option is <c>None</c>.
     /// </summary>
-    public static ImmutableOptionRef<T> AsRef<T>(this Option<T> opt)
+    public static ImmutableOptionRef<T> AsRef<T>(ref this Option<T> opt)
         where T : struct
         => opt.IsSome() ? ImmutableOptionRef<T>.Create(ref Unsafe.AsRef(ref opt._value)) : default;
 
@@ -38,7 +37,7 @@ public static class OptionExtensions
     /// returns <c>default</c> if the option is <c>None</c>.
     /// Only works for value types.
     /// </summary>
-    public static MutableOptionRef<T> AsMut<T>(this Option<T> opt) 
+    public static MutableOptionRef<T> AsMut<T>(ref this Option<T> opt) 
         where T : struct
         => opt.IsSome() ? MutableOptionRef<T>.Create(ref Unsafe.AsRef(ref opt._value)) : default;
     

@@ -1,4 +1,4 @@
-namespace RResults.Core.Options;
+namespace RResult.Shared.Options;
 
 internal static class OptionLogic
 {

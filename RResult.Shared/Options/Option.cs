@@ -1,8 +1,4 @@
-﻿using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
-using RResults.Core.Options.Ref;
-
-namespace RResults.Core.Options;
+﻿namespace RResult.Shared.Options;
 
 /// <summary>
 /// Represents an optional value: every <see cref="Option{T}"/> is either <c>Some</c> and contains a value,

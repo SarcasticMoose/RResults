@@ -1,18 +1,18 @@
-namespace RResults.Core.Options.Ref;
+namespace RResult.Shared.Options.Ref;
 
-public readonly ref struct ImmutableOptionRef<T>
+public ref struct MutableOptionRef<T>
 {
-    internal readonly ref T _value;
-    private readonly bool _isSome;
+    internal ref T _value;
+    private bool _isSome;
 
-    private ImmutableOptionRef(ref T value)
+    private MutableOptionRef(ref T value, bool isSome)
     {
         _value = ref value;
-        _isSome = true;
+        _isSome = isSome;
     }
-    
-    public static ImmutableOptionRef<T> Create(ref T value) => new(ref value);
-    
+
+    public static MutableOptionRef<T> Create(ref T value, bool isSome = true) => new(ref value, isSome);
+
     /// <inheritdoc cref="OptionLogic.IsSome"/>
     public bool IsSome() => OptionLogic.IsSome(_isSome);
 
