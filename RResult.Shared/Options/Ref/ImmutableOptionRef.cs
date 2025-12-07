@@ -2,7 +2,7 @@ namespace RResult.Shared.Options.Ref;
 
 public readonly ref struct ImmutableOptionRef<T>
 {
-    internal readonly ref T _value;
+    private readonly ref T _value;
     private readonly bool _isSome;
 
     private ImmutableOptionRef(ref T value)
