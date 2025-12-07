@@ -1,4 +1,4 @@
-﻿namespace RResults;
+﻿namespace RResult.Shared.Options;
 
 /// <summary>
 /// Represents an optional value: every <see cref="Option{T}"/> is either <c>Some</c> and contains a value,
@@ -30,24 +30,13 @@ public struct Option<T>
         _value = value;
         _isSome = true;
     }
+    
+    /// <inheritdoc cref="OptionLogic.IsSome"/>
+    public bool IsSome() => OptionLogic.IsSome(_isSome);
 
-    /// <summary>
-    /// Returns <c>true</c> if the option contains a value (i.e., is the <c>Some</c> variant).
-    /// </summary>
-    /// <returns><c>true</c> if this option has a value; otherwise, <c>false</c>.</returns>
-    public bool IsSome() => _isSome;
+    /// <inheritdoc cref="OptionLogic.IsNone"/>
+    public bool IsNone() => OptionLogic.IsNone(_isSome);
     
-    /// <summary>
-    /// Returns <c>true</c> if the option contains a value (i.e., is the <c>Some</c> variant).
-    /// </summary>
-    /// <returns><c>true</c> if this option has a value; otherwise, <c>false</c>.</returns>
-    public bool IsNone() => !_isSome;
-    
-    /// <summary>
-    /// Returns the contained value if this <see cref="Option{T}"/> is <c>Some</c>.
-    /// Throws an <see cref="InvalidOperationException"/> if the option is <c>None</c>.
-    /// </summary>
-    /// <returns>The value contained in the option.</returns>
-    /// <exception cref="InvalidOperationException">Thrown when the option is <c>None</c>.</exception>
-    public T UnwrapOrPanic() => IsSome() ? _value : throw new InvalidOperationException("Option is None");
+    /// <inheritdoc cref="OptionLogic.UnwrapOrPanic"/>
+    public T UnwrapOrPanic() => OptionLogic.UnwrapOrPanic(_isSome, _value);
 }

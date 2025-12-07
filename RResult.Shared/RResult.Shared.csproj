@@ -6,4 +6,9 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+        <InternalsVisibleTo Include="RResult.Extensions.Functional" />
+        <InternalsVisibleTo Include="RResult.Tests" />
+    </ItemGroup>
+
 </Project>

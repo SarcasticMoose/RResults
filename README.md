@@ -32,7 +32,7 @@ var none = Option<int>.None;
 
 if (some.IsSome())
 {
-    int value = some.UnwrapOrPanic(); // safe, value = 42
+    int value = some.UnwrapOrPanic();
 }
 
 // This would throw an exception:
