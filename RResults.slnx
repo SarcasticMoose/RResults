@@ -1,5 +1,4 @@
 <Solution>
-  <Project Path="RResults/RResults.csproj" />
   <Project Path="RResult.Extensions.Functional\RResult.Extensions.Functional.csproj" />
   <Project Path="RResult.Shared\RResult.Shared.csproj" />
   <Project Path="RResult\RResult.csproj" />
