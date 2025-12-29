@@ -1,7 +1,7 @@
-using RResult.Shared.Options;
-using RResult.Shared.Results.Errors;
+using RResult.Options;
+using RResult.Results.Errors;
 
-namespace RResult.Shared.Results;
+namespace RResult.Results;
 
 public interface IResult
 {

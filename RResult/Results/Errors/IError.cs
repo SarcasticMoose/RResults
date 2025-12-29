@@ -1,4 +1,4 @@
-namespace RResult.Shared.Results.Errors;
+namespace RResult.Results.Errors;
 
 public interface IError
 {

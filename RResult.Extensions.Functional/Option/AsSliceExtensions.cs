@@ -1,5 +1,6 @@
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
-using RResult.Shared.Options;
+using RResult.Options;
 
 namespace RResult.Extensions.Functional.Option;
 
@@ -19,7 +20,7 @@ public static class AsSliceExtensions
     {
         return !opt.IsSome
             ? ReadOnlySpan<T>.Empty
-            : MemoryMarshal.CreateReadOnlySpan(ref opt._value, 1);
+            : MemoryMarshal.CreateReadOnlySpan(ref Unsafe.AsRef(in opt._value), 1);
     }
 
     /// <summary>

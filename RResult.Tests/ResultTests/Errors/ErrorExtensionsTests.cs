@@ -1,5 +1,5 @@
-using RResult.Shared.Results.Errors;
-using RResult.Shared.Results.Errors.Extensions;
+using RResult.Results.Errors;
+using RResult.Results.Errors.Extensions;
 
 namespace RResult.Tests.ResultTests.Errors;
 

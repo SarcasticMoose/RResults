@@ -1,10 +1,7 @@
 # Rust-like Option & Result for C#
 
-This repository provides **Rust-inspired optional and result types** for C#, including `Option<T>` and `Result<T, E>`.
-
-It enables writing **safe, explicit, and functional-style code** in .NET — eliminating `null` reference exceptions and reducing reliance on exceptions for standard control flow.
-
----
+This repository provides **RResult** — a Rust-inspired `Result` type for C#, along with `Option<T>`.  
+It enables writing **safe, explicit, and functional-style code** in .NET, helping eliminate `null` reference exceptions and reducing reliance on exceptions for standard control flow.
 
 ## 🚀 Key Features
 
@@ -13,7 +10,10 @@ It enables writing **safe, explicit, and functional-style code** in .NET — eli
 * **Functional API**: Support for safe pattern matching and fluent chaining.
 * **Rust-Inspired**: Familiar naming conventions for developers coming from Rust or other functional languages.
 
----
+### Instalation
+```csharp
+dotnet add package RResult
+```
 
 ## 📦 1. Option<T>
 

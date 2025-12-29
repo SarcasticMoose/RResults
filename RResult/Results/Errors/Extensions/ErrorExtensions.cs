@@ -1,7 +1,6 @@
-using System.Text;
 using System.Text.Json;
 
-namespace RResult.Shared.Results.Errors.Extensions;
+namespace RResult.Results.Errors.Extensions;
 
 public static class ErrorExtensions
 {
@@ -11,7 +10,7 @@ public static class ErrorExtensions
     /// </summary>
     /// <param name="error">The error instance to convert to string.</param>
     /// <returns>A string representation of the error.</returns>
-    internal static string ToReadableString(this IError? error)
+    public static string ToReadableString(this IError? error)
     {
         return error == null ? string.Empty : JsonSerializer.Serialize(error, new JsonSerializerOptions { WriteIndented = true });
     }

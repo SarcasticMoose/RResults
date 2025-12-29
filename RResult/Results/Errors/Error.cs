@@ -1,8 +1,8 @@
 using System.Collections.Frozen;
 using System.Collections.Immutable;
-using RResult.Shared.Results.Errors.Extensions;
+using RResult.Results.Errors.Extensions;
 
-namespace RResult.Shared.Results.Errors;
+namespace RResult.Results.Errors;
 
 public abstract class BaseError : IError
 {

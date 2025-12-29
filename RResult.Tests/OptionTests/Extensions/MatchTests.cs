@@ -1,5 +1,5 @@
 using RResult.Extensions.Functional.Option;
-using RResult.Shared.Options;
+using RResult.Options;
 
 namespace RResult.Tests.OptionTests.Extensions;
 

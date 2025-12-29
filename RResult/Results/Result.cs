@@ -1,7 +1,6 @@
-using RResult.Shared.Options;
-using RResult.Shared.Results.Errors;
+using RResult.Results.Errors;
 
-namespace RResult.Shared.Results;
+namespace RResult.Results;
 
 /// <summary>
 /// Represents the result of an operation, which can either be a success or a failure.
@@ -46,8 +45,14 @@ public sealed record Result<T, TError> : IResult
     {
         _error = error;
     }
-
-    public Option<T> OkOption() => IsOk ? Option<T>.Some(_value!) : Option<T>.None;
-    public Option<TError> ErrorOption() => IsError ? Option<TError>.Some(_error!) : Option<TError>.None;
+    
+    public TResult Match<TResult>(
+        Func<T, TResult> ok,
+        Func<TError, TResult> error)
+    {
+        return IsOk
+            ? ok(_value!)
+            : error(_error!);
+    }
 }
 

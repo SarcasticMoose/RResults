@@ -1,4 +1,4 @@
-using RResult.Shared.Options;
+using RResult.Options;
 
 namespace RResult.Extensions.Functional.Option;
 
@@ -14,19 +14,4 @@ public static class OptionsExtensions
     /// <exception cref="InvalidOperationException">Thrown if the option is <c>None</c>.</exception>
     public static T Expect<T>(this Option<T> opt, string message)
         => opt.IsSome ? opt._value : throw new InvalidOperationException(message);
-    
-    /// <summary>
-    /// Performs pattern matching on an <see cref="Option{T}"/> instance,
-    /// executing one of the provided functions depending on whether the option contains a value.
-    /// </summary>
-    /// <typeparam name="T">The type of the value contained in the option.</typeparam>
-    /// <typeparam name="TResult">The return type of the matching functions.</typeparam>
-    /// <param name="option">The option to match on.</param>
-    /// <param name="some">The function to execute if the option contains a value (`Some`).</param>
-    /// <param name="none">The function to execute if the option contains no value (`None`).</param>
-    public static TResult Match<T, TResult>(
-        this Option<T> option,
-        Func<T, TResult> some,
-        Func<TResult> none)
-            => option._isSome ? some(option._value) : none();
 }

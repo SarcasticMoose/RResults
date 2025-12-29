@@ -1,5 +1,5 @@
-using RResult.Shared.Results;
-using RResult.Shared.Results.Errors;
+using RResult.Results;
+using RResult.Results.Errors;
 
 namespace RResult.Extensions.Functional.Results;
 
