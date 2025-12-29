@@ -1,10 +1,9 @@
-using RResult.Extensions.Functional.Results;
 using RResult.Results;
 using RResult.Results.Errors;
 
 namespace RResult.Tests.ResultTests;
 
-public class TestBaseError() : BaseError("Operation Failed");
+public class TestBaseError(string? message = null) : BaseError(message ?? "Operation Failed");
 
 public class MatchTests
 {

@@ -7,7 +7,7 @@ namespace RResult.Results;
 /// </summary>
 /// <typeparam name="T">The type of the value returned on success.</typeparam>
 /// <typeparam name="TError">The type of the error returned on failure (must implement <see cref="IError"/>).</typeparam>
-public sealed record Result<T, TError> : IResult
+public readonly struct Result<T, TError> : IResult
     where TError : IError
     where T : notnull
 {

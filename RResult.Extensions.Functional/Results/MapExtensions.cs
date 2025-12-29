@@ -3,7 +3,7 @@ using RResult.Results.Errors;
 
 namespace RResult.Extensions.Functional.Results;
 
-public static class CastExtensions
+public static class MapExtensions
 {
     public static Result<T, TNewError> MapError<T, TOldError, TNewError>(
         this Result<T, TOldError> result,
@@ -16,13 +16,5 @@ public static class CastExtensions
             Result<T, TNewError>.Ok,
             err => Result<T, TNewError>.Error(map(err))
         );
-    }
-    
-    public static Result<T, BaseError> ToError<T, TError>(
-        this Result<T, TError> result)
-        where T : notnull
-        where TError : BaseError
-    {
-        return result.MapError<T, TError, BaseError>(e => e);
     }
 }
