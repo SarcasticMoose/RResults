@@ -35,8 +35,8 @@ var emptyOption = Option<int>.None;
 ### Usage
 ```csharp
 var valueOption = Option<int>.Some(42);
-var isSome = valueOption.IsSome //check if is some
-var isNone = valueOption.IsNone // check if is none
+var isSome = valueOption.IsSome; //check if is some
+var isNone = valueOption.IsNone; // check if is none
 var value = valueOption.UnwrapOrThrow(); // unwrap when some / panic when none
 ```
 
