@@ -1,39 +1,44 @@
 # Rust-like Option & Result for C#
 
-This repository provides **Rust-inspired optional and result types** in C#, including `Option<T>` and `Result<T, E>`.  
-It allows writing **safe, functional-style code** in C# similar to Rust’s standard library.
+This repository provides **RResult** — a Rust-inspired `Result` type for C#, along with `Option<T>`.  
+It enables writing **safe, explicit, and functional-style code** in .NET, helping eliminate `null` reference exceptions and reducing reliance on exceptions for standard control flow.
 
-## Features
+## 🚀 Key Features
 
-### Option<T>
+* **Zero Nulls**: Explicitly model the presence or absence of a value.
+* **Explicit Error Handling**: Errors are part of the method signature, making them impossible to ignore.
+* **Functional API**: Support for safe pattern matching and fluent chaining.
+* **Rust-Inspired**: Familiar naming conventions for developers coming from Rust or other functional languages.
 
-- Represents an optional value: **every Option is either `Some` or `None`**.
-- Minimal, value-type implementation with basic creation and checks.
-- Safe retrieval of the contained value via methods like `UnwrapOrPanic()`.
-
-| Method | Description |
-|--------|-------------|
-| `Some(T value)` | Creates an `Option` containing a value |
-| `None` | Returns an `Option` with no value |
-| `IsSome()` / `IsNone()` | Checks if the option contains a value or not |
-| `UnwrapOrPanic()` | Returns the contained value or throws an exception if the option is `None` |
-
-
-### Important Notes on `UnwrapOrPanic()`
-
-The `UnwrapOrPanic()` method is similar to Rust's `unwrap()`.  
-It **throws an `InvalidOperationException`** if the option is `None`.
-
-**Always check** `IsSome()` before calling `UnwrapOrPanic()`:
-
+### Instalation
 ```csharp
-var some = Option<int>.Some(42);
-var none = Option<int>.None;
+dotnet add package RResult
+```
 
-if (some.IsSome())
-{
-    int value = some.UnwrapOrPanic();
-}
+## 📦 1. Option<T>
 
-// This would throw an exception:
-int fail = none.UnwrapOrPanic();
+`Option<T>` represents an optional value: **every `Option` is either `Some` or `None`.** It is used to explicitly model the absence of a value without using `null`.
+
+### State Inspection
+* **`IsSome`**: `true` if the option contains a value.
+* **`IsNone`**: `true` if the option is empty.
+
+### Creation
+```csharp
+// Creating a value
+var valueOption = Option<int>.Some(42);
+
+// Creating an empty state
+var emptyOption = Option<int>.None;
+```
+
+### Usage
+```csharp
+var valueOption = Option<int>.Some(42);
+var isSome = valueOption.IsSome; //check if is some
+var isNone = valueOption.IsNone; // check if is none
+var value = valueOption.UnwrapOrThrow(); // unwrap when some / panic when none
+```
+
+> [!WARNING]  
+> Using `UnwrapOrThrow()` without checking if option is some will throw exception

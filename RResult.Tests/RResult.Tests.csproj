@@ -24,7 +24,6 @@
 
     <ItemGroup>
       <ProjectReference Include="..\RResult.Extensions.Functional\RResult.Extensions.Functional.csproj" />
-      <ProjectReference Include="..\RResult.Shared\RResult.Shared.csproj" />
     </ItemGroup>
 
 </Project>

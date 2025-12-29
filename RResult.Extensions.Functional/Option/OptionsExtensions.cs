@@ -1,6 +1,6 @@
-using RResult.Shared.Options;
+using RResult.Options;
 
-namespace RResult.Extensions.Functional;
+namespace RResult.Extensions.Functional.Option;
 
 public static class OptionsExtensions
 {
@@ -13,5 +13,5 @@ public static class OptionsExtensions
     /// <returns>The contained value if <c>Some</c>.</returns>
     /// <exception cref="InvalidOperationException">Thrown if the option is <c>None</c>.</exception>
     public static T Expect<T>(this Option<T> opt, string message)
-        => opt.IsSome() ? opt._value : throw new InvalidOperationException(message);
+        => opt.IsSome ? opt._value : throw new InvalidOperationException(message);
 }
