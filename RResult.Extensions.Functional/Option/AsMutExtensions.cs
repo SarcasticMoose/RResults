@@ -1,7 +1,7 @@
 using RResult.Shared.Options;
 using RResult.Shared.Options.Ref;
 
-namespace RResult.Extensions.Functional;
+namespace RResult.Extensions.Functional.Option;
 
 public static class AsMutExtensions
 {

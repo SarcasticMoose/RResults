@@ -8,7 +8,7 @@
 public struct Option<T>
 {
     internal T _value;
-    internal readonly bool _isSome;
+    private readonly bool _isSome;
     
     /// <summary>
     /// Creates an <see cref="Option{T}"/> that contains a value.
@@ -17,18 +17,24 @@ public struct Option<T>
     /// <param name="value">The value to wrap in the option.</param>
     /// <returns>An <see cref="Option{T}"/> containing the given value.</returns>
     public static Option<T> Some(T value) => new(value);
-    
+
     /// <summary>
     /// Returns an <see cref="Option{T}"/> representing the <c>None</c> variant,
     /// meaning the option has no value.
     /// </summary>
     /// <returns>An <see cref="Option{T}"/> with no value.</returns>
-    public static Option<T> None => default;
-    
-    internal Option(T value)
+    public static Option<T> None => new();
+
+    private Option(T value)
     {
         _value = value;
-        _isSome = true;
+        _isSome = value != null;
+    }
+    
+    private Option(bool _)
+    {
+        _value = default!;
+        _isSome = false;
     }
     
     /// <inheritdoc cref="OptionLogic.IsSome"/>
@@ -38,5 +44,5 @@ public struct Option<T>
     public bool IsNone() => OptionLogic.IsNone(_isSome);
     
     /// <inheritdoc cref="OptionLogic.UnwrapOrPanic"/>
-    public T UnwrapOrPanic() => OptionLogic.UnwrapOrPanic(_isSome, _value);
+    public readonly T UnwrapOrPanic() => OptionLogic.UnwrapOrPanic(_isSome, _value);
 }

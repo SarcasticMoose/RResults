@@ -1,4 +1,4 @@
-using RResult.Extensions.Functional;
+using RResult.Extensions.Functional.Option;
 using RResult.Shared.Options;
 
 namespace RResult.Tests.OptionTests.Extensions;

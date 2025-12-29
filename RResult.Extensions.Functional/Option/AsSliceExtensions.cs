@@ -1,7 +1,7 @@
 using System.Runtime.InteropServices;
 using RResult.Shared.Options;
 
-namespace RResult.Extensions.Functional;
+namespace RResult.Extensions.Functional.Option;
 
 public static class AsSliceExtensions
 {
