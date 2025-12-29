@@ -2,16 +2,16 @@ namespace RResult.Shared.Options.Ref;
 
 public readonly ref struct ImmutableOptionRef<T>
 {
-    private readonly ref T _value;
-    private readonly bool _isSome;
+    internal readonly ref T _value;
+    internal readonly bool _isSome;
 
-    private ImmutableOptionRef(ref T value)
+    private ImmutableOptionRef(in T value)
     {
-        _value = ref value;
+        _value = value;
         _isSome = true;
     }
     
-    public static ImmutableOptionRef<T> Create(ref T value) => new(ref value);
+    public static ImmutableOptionRef<T> Create(in T value) => new(in value);
     
     /// <inheritdoc cref="OptionLogic.IsSome"/>
     public bool IsSome() => OptionLogic.IsSome(_isSome);
@@ -19,6 +19,6 @@ public readonly ref struct ImmutableOptionRef<T>
     /// <inheritdoc cref="OptionLogic.IsNone"/>
     public bool IsNone() => OptionLogic.IsNone(_isSome);
     
-    /// <inheritdoc cref="OptionLogic.UnwrapOrPanicRef"/>
-    public ref readonly T UnwrapOrPanic() => ref OptionLogic.UnwrapOrPanicRef(_isSome, ref _value);
+    /// <inheritdoc cref="OptionLogic.UnwrapOrThrowRef{T}"/>
+    public ref readonly T UnwrapOrThrow() => ref OptionLogic.UnwrapOrThrowRef(_isSome, ref _value);
 }

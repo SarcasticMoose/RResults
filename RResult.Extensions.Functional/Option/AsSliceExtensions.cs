@@ -17,7 +17,7 @@ public static class AsSliceExtensions
     /// </returns>
     public static ReadOnlySpan<T> AsSlice<T>(this ref Option<T> opt)
     {
-        return !opt.IsSome()
+        return !opt.IsSome
             ? ReadOnlySpan<T>.Empty
             : MemoryMarshal.CreateReadOnlySpan(ref opt._value, 1);
     }
@@ -34,7 +34,7 @@ public static class AsSliceExtensions
     /// </returns>
     public static ReadOnlySpan<T> AsSlice<T>(this ref Option<T[]> opt)
     {
-        return !opt.IsSome() ? ReadOnlySpan<T>.Empty : opt._value.AsSpan();
+        return !opt.IsSome ? ReadOnlySpan<T>.Empty : opt._value.AsSpan();
     }
 
     /// <summary>
@@ -48,6 +48,6 @@ public static class AsSliceExtensions
     /// </returns>
     public static ReadOnlySpan<char> AsSlice(this ref Option<string> opt)
     {
-        return !opt.IsSome() ? ReadOnlySpan<char>.Empty : opt._value.AsSpan();
+        return !opt.IsSome ? ReadOnlySpan<char>.Empty : opt._value.AsSpan();
     }
 }

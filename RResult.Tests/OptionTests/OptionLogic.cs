@@ -23,38 +23,38 @@ public class OptionLogicTests
     }
 
     [Fact]
-    public void UnwrapOrPanic_OnSome_ReturnsValue()
+    public void UnwrapOrThrow_OnSome_ReturnsValue()
     {
         int value = 42;
-        int result = OptionLogic.UnwrapOrPanic(true, value);
+        int result = OptionLogic.UnwrapOrThrow(true, value);
 
         Assert.Equal(value, result);
     }
 
     [Fact]
-    public void UnwrapOrPanic_OnNone_ThrowsInvalidOperationException()
+    public void UnwrapOrThrow_OnNone_ThrowsInvalidOperationException()
     {
         int value = 42;
 
-        var ex = Assert.Throws<InvalidOperationException>(() => OptionLogic.UnwrapOrPanic(false, value));
+        var ex = Assert.Throws<InvalidOperationException>(() => OptionLogic.UnwrapOrThrow(false, value));
         Assert.Equal("Option is None", ex.Message);
     }
 
     [Fact]
-    public void UnwrapOrPanicRef_OnSome_ReturnsReference()
+    public void UnwrapOrThrowRef_OnSome_ReturnsReference()
     {
         int value = 100;
-        ref int result = ref OptionLogic.UnwrapOrPanicRef(true, ref value);
+        ref int result = ref OptionLogic.UnwrapOrThrowRef(true, ref value);
         result = 200;
         Assert.Equal(200, value);
     }
 
     [Fact]
-    public void UnwrapOrPanicRef_OnNone_ThrowsInvalidOperationException()
+    public void UnwrapOrThrowRef_OnNone_ThrowsInvalidOperationException()
     {
         int value = 0;
 
-        var ex = Assert.Throws<InvalidOperationException>(() => OptionLogic.UnwrapOrPanicRef(false, ref value));
+        var ex = Assert.Throws<InvalidOperationException>(() => OptionLogic.UnwrapOrThrowRef(false, ref value));
         Assert.Equal("Option is None", ex.Message);
     }
 }

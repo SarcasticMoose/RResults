@@ -8,7 +8,7 @@
 public struct Option<T>
 {
     internal T _value;
-    private readonly bool _isSome;
+    internal readonly bool _isSome;
     
     /// <summary>
     /// Creates an <see cref="Option{T}"/> that contains a value.
@@ -38,11 +38,11 @@ public struct Option<T>
     }
     
     /// <inheritdoc cref="OptionLogic.IsSome"/>
-    public bool IsSome() => OptionLogic.IsSome(_isSome);
+    public bool IsSome => OptionLogic.IsSome(_isSome);
 
     /// <inheritdoc cref="OptionLogic.IsNone"/>
-    public bool IsNone() => OptionLogic.IsNone(_isSome);
+    public bool IsNone => OptionLogic.IsNone(_isSome);
     
-    /// <inheritdoc cref="OptionLogic.UnwrapOrPanic"/>
-    public readonly T UnwrapOrPanic() => OptionLogic.UnwrapOrPanic(_isSome, _value);
+    /// <inheritdoc cref="OptionLogic.UnwrapOrThrow{T}"/>
+    public readonly T UnwrapOrThrow() => OptionLogic.UnwrapOrThrow(_isSome, _value);
 }

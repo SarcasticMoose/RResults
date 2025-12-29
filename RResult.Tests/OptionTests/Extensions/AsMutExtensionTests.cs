@@ -9,8 +9,8 @@ public class AsMutExtensionTests
     public void AsMut_OnSomeOption_AllowsModifyingUnderlyingValue()
     {
         var option = Option<int>.Some(1);
-        ref var mutable = ref option.AsMut().UnwrapOrPanic();
+        ref var mutable = ref option.AsMut().UnwrapOrThrow();
         mutable = 2;
-        Assert.Equal(2, option.UnwrapOrPanic());
+        Assert.Equal(2, option.UnwrapOrThrow());
     }
 }

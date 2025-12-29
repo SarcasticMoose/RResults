@@ -12,7 +12,7 @@ public class OptionExpectTests
         int value = option.Expect("Should not throw");
 
         Assert.Equal(42, value);
-        Assert.True(option.IsSome());
+        Assert.True(option.IsSome);
     }
 
     [Fact]
@@ -23,6 +23,6 @@ public class OptionExpectTests
         var ex = Assert.Throws<InvalidOperationException>(() => option.Expect("Custom error message"));
 
         Assert.Equal("Custom error message", ex.Message);
-        Assert.True(option.IsNone());
+        Assert.True(option.IsNone);
     }
 }

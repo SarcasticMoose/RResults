@@ -20,7 +20,7 @@ internal static class OptionLogic
     /// </summary>
     /// <returns>The value contained in the option.</returns>
     /// <exception cref="InvalidOperationException">Thrown when the option is <c>None</c>.</exception>
-    public static T UnwrapOrPanic<T>(bool isSome, T value)
+    public static T UnwrapOrThrow<T>(bool isSome, T value)
     {
         EnsureSome(isSome);
         return value;
@@ -32,7 +32,7 @@ internal static class OptionLogic
     /// </summary>
     /// <returns>The value contained in the option.</returns>
     /// <exception cref="InvalidOperationException">Thrown when the option is <c>None</c>.</exception>
-    public static ref T UnwrapOrPanicRef<T>(bool isSome, ref T value)
+    public static ref T UnwrapOrThrowRef<T>(bool isSome, ref T value)
     {
         EnsureSome(isSome);
         return ref value;
